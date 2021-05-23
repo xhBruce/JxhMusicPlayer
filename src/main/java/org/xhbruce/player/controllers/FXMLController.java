@@ -3,15 +3,12 @@ package org.xhbruce.player.controllers;
 import com.goxr3plus.streamplayer.stream.StreamPlayerEvent;
 import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileFilter;
 import org.jaudiotagger.audio.AudioFileIO;
@@ -211,10 +208,27 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                antf_resume_circle.setIconLiteral("antf-play-circle");
                 musicProgress.setProgress(0);
+                Platform.runLater(() -> {
+                    nextMusic();
+                });
                 break;
         }
 
+    }
+
+    private void nextMusic() {
+        System.out.println(TAG + " musicStepForward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
+        int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+        if (selectIndex < musicList.getItems().size() - 1) {
+            musicList.getSelectionModel().select(selectIndex + 1);
+        } else {
+            musicList.getSelectionModel().select(0);
+        }
+        AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
+        MusicPlayerService.getInstance().load(audioFile);
+        MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
     }
 
 }
