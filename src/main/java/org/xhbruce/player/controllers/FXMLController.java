@@ -81,15 +81,10 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         });
 
         musicStepBackward.setOnAction(event -> {
-            System.out.println(TAG + " musicStepBackward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex() + " ;isNextMusic = " + isNextMusic);
+            System.out.println(TAG + " musicStepBackward clicked ");
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             if (selectIndex > 0) {
-                isNextMusic = false;
                 musicList.getSelectionModel().select(selectIndex - 1);
-                AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
-                MusicPlayerService.getInstance().load(audioFile);
-                MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
-                System.out.println(" musicStepBackward clicked: isNextMusic = " + isNextMusic);
             }
 
         });
@@ -103,15 +98,10 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         });
 
         musicStepForward.setOnAction(event -> {
-            System.out.println(TAG + " musicStepForward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
+            System.out.println(TAG + " musicStepForward clicked ");
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             if (selectIndex < musicList.getItems().size() - 1) {
-                isNextMusic = false;
                 musicList.getSelectionModel().select(selectIndex + 1);
-                AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
-                MusicPlayerService.getInstance().load(audioFile);
-                MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
-                System.out.println(" musicStepForward clicked: isNextMusic = " + isNextMusic);
             }
         });
 
@@ -182,8 +172,9 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             });
         }).start();
         musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-//            System.out.println(TAG + newValue);
             isNextMusic = false;
+            int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+            musicList.scrollTo(selectIndex);
             MusicPlayerService.getInstance().load((AudioFile) newValue);
             MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(((AudioFile) newValue).getFile()));
         });
