@@ -31,6 +31,9 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @FXML
     private BorderPane mainWindow;
     @FXML
+    private BorderPane mainBottom;
+
+    @FXML
     private Button open_music_file;
     @FXML
     ListView musicList;
@@ -55,6 +58,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @FXML
     FontIcon antf_step_forward;
     //
+    private Boolean isNextMusic = false;
 
     @FXML
     private ProgressBar musicProgress;
@@ -77,13 +81,15 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         });
 
         musicStepBackward.setOnAction(event -> {
-            System.out.println(TAG + " musicStepBackward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
+            System.out.println(TAG + " musicStepBackward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex() + " ;isNextMusic = " + isNextMusic);
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             if (selectIndex > 0) {
+                isNextMusic = false;
                 musicList.getSelectionModel().select(selectIndex - 1);
                 AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
                 MusicPlayerService.getInstance().load(audioFile);
                 MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
+                System.out.println(" musicStepBackward clicked: isNextMusic = " + isNextMusic);
             }
 
         });
@@ -100,19 +106,28 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             System.out.println(TAG + " musicStepForward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             if (selectIndex < musicList.getItems().size() - 1) {
+                isNextMusic = false;
                 musicList.getSelectionModel().select(selectIndex + 1);
                 AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
                 MusicPlayerService.getInstance().load(audioFile);
                 MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
+                System.out.println(" musicStepForward clicked: isNextMusic = " + isNextMusic);
             }
         });
 
+//        mainWindow.prefHeightProperty().bind(MainApp.window.heightProperty());
         mainWindow.widthProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(TAG + "当前窗口宽度 " + newValue.doubleValue());
             musicProgress.setPrefWidth(newValue.doubleValue());
+//            musicList.setPrefWidth(newValue.doubleValue() - 20);
+            musicList.setPrefWidth(newValue.doubleValue());
+            musicList.refresh();
         });
         mainWindow.heightProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println(TAG + "当前窗口高度 " + newValue.doubleValue());
+//            double musicListHeight = newValue.doubleValue() - (mainBottom.getHeight() + open_music_file.getHeight() + 20);
+//            musicList.setPrefHeight(musicListHeight);
+            musicList.setPrefHeight(newValue.doubleValue());
             musicList.refresh();
         });
 
@@ -195,6 +210,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                 });
                 break;
             case PLAYING:
+                isNextMusic = true;
             case RESUMED:
                 antf_resume_circle.setIconLiteral("antf-pause-circle");
                 break;
@@ -219,6 +235,9 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     }
 
     private void nextMusic() {
+        if (!isNextMusic) {
+            return;
+        }
         System.out.println(TAG + " musicStepForward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
         int selectIndex = musicList.getSelectionModel().getSelectedIndex();
         if (selectIndex < musicList.getItems().size() - 1) {
