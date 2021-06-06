@@ -22,12 +22,14 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class FXMLController implements Initializable, StreamPlayerListener {
 
     File rootDir = new File("F:\\Music");
     private static String TAG = "FXMLController: ";
-
+    private ExecutorService threadPool;
     @FXML
     private BorderPane mainWindow;
     @FXML
@@ -36,7 +38,10 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @FXML
     private Button open_music_file;
     @FXML
+    private Button open_music_folder;
+    @FXML
     ListView musicList;
+    private Boolean isMusicListFlush = false;
     @FXML
     private Label labelVersion;
 
@@ -65,7 +70,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        threadPool = Executors.newSingleThreadExecutor();
         MusicPlayerService.getInstance().addStreamPlayerListener(this);
 
         String javaVersion = System.getProperty("java.version");
@@ -73,10 +78,17 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         labelVersion.setText("Hello, JavaFX " + javafxVersion + " Running on Java " + javaVersion + ".");
 
         open_music_file.setOnAction(event -> {
-            File filePath = FileUtil.openFileChooser(MainApp.window);
+            File filePath = FileUtil.openFileChooser(MainApp.window, open_music_file.getText());
             if (filePath.isFile()) {
                 MusicPlayerService.getInstance().load(filePath);
                 MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(filePath));
+            }
+        });
+        open_music_folder.setOnAction(event -> {
+            File filePath = FileUtil.openFolderChooser(MainApp.window, open_music_folder.getText());
+            if (filePath.isDirectory()) {
+                System.out.println(TAG + " open_music_folder = " + filePath.getAbsolutePath());
+                initMusicList(filePath);
             }
         });
 
@@ -122,24 +134,38 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         });
 
         musicProgress.setProgress(0);
+
         initMusicList();
+        musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (isMusicListFlush) {
+                isMusicListFlush = false;
+                return;
+            }
+            isNextMusic = false;
+            int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+            musicList.scrollTo(selectIndex);
+            MusicPlayerService.getInstance().load((AudioFile) newValue);
+            MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(((AudioFile) newValue).getFile()));
+        });
     }
 
     private void initMusicList() {
-        musicList.setPrefWidth(500);
+        String path = "";
+        try {
+            path = new String("F:/Music/音乐/".getBytes(), "UTF-8");
+            initMusicList(new File(path));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
-        new Thread(() -> {
-            String path = "";
-            try {
-                path = new String("F:/Music/音乐/".getBytes(), "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            File rootDir = new File(path);
-            if (!rootDir.isDirectory()) {
-                System.err.println(" Directory could not be found");
-                return;
-            }
+    }
+
+    private void initMusicList(File rootDir) {
+        if (!rootDir.exists() || !rootDir.isDirectory()) {
+            System.err.println(" Directory could not be found");
+            return;
+        }
+        threadPool.execute(() -> {
             File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
             System.out.println(rootDir.getName() + ".length = " + audioFiles.length);
             ObservableList<AudioFile> musicObsList = FXCollections.observableArrayList();
@@ -157,6 +183,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             }
             musicObsList.sorted();
             Platform.runLater(() -> {
+                isMusicListFlush = true;
                 musicList.setItems(musicObsList);
                 musicList.setCellFactory(param -> new ListCell<AudioFile>() {
                     @Override
@@ -169,15 +196,12 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                         }
                     }
                 });
+                isMusicListFlush = false;
             });
-        }).start();
-        musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            isNextMusic = false;
-            int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            musicList.scrollTo(selectIndex);
-            MusicPlayerService.getInstance().load((AudioFile) newValue);
-            MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(((AudioFile) newValue).getFile()));
         });
+//        new Thread(() -> {
+//
+//        }).start();
     }
 
     @Override

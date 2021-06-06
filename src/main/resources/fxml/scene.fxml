@@ -12,7 +12,10 @@
         <Insets top="10" left="10" bottom="10" right="10"/>
     </padding>
     <top>
-        <Button fx:id="open_music_file">Open File</Button>
+        <HBox>
+            <Button fx:id="open_music_file">打开音乐文件</Button>
+            <Button fx:id="open_music_folder">打开音乐文件夹</Button>
+        </HBox>
     </top>
     <left>
     </left>
