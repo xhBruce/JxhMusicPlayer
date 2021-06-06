@@ -183,6 +183,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         }).start();
         musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 //            System.out.println(TAG + newValue);
+            isNextMusic = false;
             MusicPlayerService.getInstance().load((AudioFile) newValue);
             MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(((AudioFile) newValue).getFile()));
         });
