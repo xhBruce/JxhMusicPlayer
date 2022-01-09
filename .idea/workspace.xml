@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="下一首、上一首和ListView选中监听重复load">
+    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="添加选择“打开音乐文件夹”功能，导入音乐文件">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,23 +42,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -62,12 +49,15 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goxr3plus/java-stream-player/9.0.4/2a29f4cae26b0d29aa456a83b443bcec09258262/java-stream-player-9.0.4-sources.jar!/com/goxr3plus/streamplayer/stream/StreamPlayer.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goxr3plus/java-stream-player/9.0.4/2a29f4cae26b0d29aa456a83b443bcec09258262/java-stream-player-9.0.4-sources.jar!/com/goxr3plus/streamplayer/application/Main.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1s7d47VNFFP8x6kAR9wpEzvHZN1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -81,10 +71,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17407759" />
     <property name="project.structure.side.proportion" value="0.16527778" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/build" />
   </component>
   <component name="RunManager" selected="Gradle.JxhMusicPlayer [run]">
@@ -103,7 +93,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JxhMusicPlayer [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JxhMusicPlayer [build]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -124,7 +114,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JxhMusicPlayer [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JxhMusicPlayer [clean]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -166,19 +156,17 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="JxhMusicPlayer [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="JxhMusicPlayer [run]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="run" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
+          <list />
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -191,14 +179,11 @@
       <item itemvalue="Application.Test" />
       <item itemvalue="Gradle.JxhMusicPlayer [build]" />
       <item itemvalue="Gradle.JxhMusicPlayer [clean]" />
-      <item itemvalue="Gradle.JxhMusicPlayer [jlink]" />
       <item itemvalue="Gradle.JxhMusicPlayer [run]" />
+      <item itemvalue="Gradle.JxhMusicPlayer [jlink]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.JxhMusicPlayer [run]" />
-        <item itemvalue="Gradle.JxhMusicPlayer [build]" />
-        <item itemvalue="Gradle.JxhMusicPlayer [clean]" />
         <item itemvalue="Gradle.JxhMusicPlayer [jlink]" />
       </list>
     </recent_temporary>
@@ -268,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622989360652</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="添加选择“打开音乐文件夹”功能，到导入音乐文件">
+      <created>1622992560484</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1622992560484</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +284,8 @@
     <MESSAGE value="删除.gradle文件" />
     <MESSAGE value="解决ListView选中执行两次nextMusic()" />
     <MESSAGE value="下一首、上一首和ListView选中监听重复load" />
-    <option name="LAST_COMMIT_MESSAGE" value="下一首、上一首和ListView选中监听重复load" />
+    <MESSAGE value="添加选择“打开音乐文件夹”功能，到导入音乐文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加选择“打开音乐文件夹”功能，到导入音乐文件" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

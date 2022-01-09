@@ -36,29 +36,14 @@ public class MusicPlayerService extends StreamPlayer {
 
 
     public void load(AudioFile audioFile) {
-        if (isPausedOrPlaying()) {
-            stop();
-        }
-
+        stop();
         try {
             this.audioFile = audioFile;
-
             open(this.audioFile.getFile());
-            //Seek by bytes
-            //seekBytes(500000L);
-
-            //Seek +x seconds starting from the current position
-            //seekSeconds(15); // forward 15 seconds
-            //seekSeconds(150); // forward 15 seconds again
-
-            /* Seek starting from the begginning of the audio */
-            //seekTo(200);
-
-            // Play it
-//            play();
-            //pause();
+            play();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Open failed : " + getStatus());
+            reset();
         }
     }
 
@@ -76,23 +61,5 @@ public class MusicPlayerService extends StreamPlayer {
 
     public AudioFile getAudioFile() {
         return audioFile;
-    }
-
-    @Override
-    public void play() {
-        try {
-            super.play();
-        } catch (StreamPlayerException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public boolean resume() {
-        if (isOpened() && !isPlaying()) {
-            System.out.println(" isOpened() && !isPlaying() ");
-            play();
-        }
-        return super.resume();
     }
 }

@@ -1,10 +1,14 @@
 package org.xhbruce.player.application;
 
+import com.goxr3plus.streamplayer.stream.StreamPlayer;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.xhbruce.player.controllers.FXMLController;
+import org.xhbruce.player.utils.Logger;
 import org.xhbruce.player.utils.io.PathInfo;
 import org.xhbruce.player.utils.JavaFXTool;
 
@@ -16,6 +20,7 @@ public class MainApp extends Application {
     /*  window ：launch 主线窗口*/
     public static Stage window;
     public static String TITILE_TAG = " XhMusicPlayer ";
+    public static Logger logger = Logger.getLogger("XhMusicPlayer-");
     // ------ END.
 
     public static void main(String[] args) {
@@ -24,7 +29,6 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         window = stage;
         /* Window */
         window.setTitle(TITILE_TAG);

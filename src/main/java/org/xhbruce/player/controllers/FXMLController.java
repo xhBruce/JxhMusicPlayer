@@ -25,11 +25,15 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static org.xhbruce.player.application.MainApp.logger;
+
 public class FXMLController implements Initializable, StreamPlayerListener {
 
     File rootDir = new File("F:\\Music");
-    private static String TAG = "FXMLController: ";
+    private static String TAG = "FXMLController";
+    private MusicPlayerService musicPlayerService = MusicPlayerService.getInstance();
     private ExecutorService threadPool;
+
     @FXML
     private BorderPane mainWindow;
     @FXML
@@ -46,11 +50,11 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     private Label labelVersion;
 
     @FXML
-    private Button musicStepBackward;
+    private Button lastSong;
     @FXML
     private Button musicResume;
     @FXML
-    private Button musicStepForward;
+    private Button nextSong;
 
 
     //
@@ -62,8 +66,6 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     private FontIcon antf_resume_circle;
     @FXML
     FontIcon antf_step_forward;
-    //
-    private Boolean isNextMusic = false;
 
     @FXML
     private ProgressBar musicProgress;
@@ -71,7 +73,7 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         threadPool = Executors.newSingleThreadExecutor();
-        MusicPlayerService.getInstance().addStreamPlayerListener(this);
+        musicPlayerService.addStreamPlayerListener(this);
 
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
@@ -80,53 +82,63 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         open_music_file.setOnAction(event -> {
             File filePath = FileUtil.openFileChooser(MainApp.window, open_music_file.getText());
             if (filePath.isFile()) {
-                MusicPlayerService.getInstance().load(filePath);
+                musicPlayerService.load(filePath);
                 MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(filePath));
             }
         });
         open_music_folder.setOnAction(event -> {
             File filePath = FileUtil.openFolderChooser(MainApp.window, open_music_folder.getText());
-            if (filePath.isDirectory()) {
-                System.out.println(TAG + " open_music_folder = " + filePath.getAbsolutePath());
+            if (filePath != null && filePath.isDirectory()) {
+                logger.infoTag(TAG, " open_music_folder = " + filePath.getAbsolutePath());
                 initMusicList(filePath);
             }
         });
 
-        musicStepBackward.setOnAction(event -> {
-            System.out.println(TAG + " musicStepBackward clicked ");
+        lastSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+            logger.info(TAG, " LastSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex > 0) {
                 musicList.getSelectionModel().select(selectIndex - 1);
-            }
-
-        });
-        musicResume.setOnAction(event -> {
-            System.out.println(TAG + " musicResume clicked");
-            if (MusicPlayerService.getInstance().isPlaying()) {
-                MusicPlayerService.getInstance().pause();
             } else {
-                MusicPlayerService.getInstance().resume();
+                musicList.getSelectionModel().select(musicList.getItems().size() - 1);
+            }
+
+        });
+
+        musicResume.setOnAction(event -> {
+            int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+            logger.infoTag(TAG, " musicResume clicked; cur MusicNum=" + selectIndex);
+            if (selectIndex >= 0 && selectIndex < musicList.getItems().size()) {
+                if (musicPlayerService.isPlaying()) {
+                    musicPlayerService.pause();
+                } else {
+                    musicPlayerService.resume();
+                }
+            } else {
+                musicList.getSelectionModel().select(0);
             }
         });
 
-        musicStepForward.setOnAction(event -> {
-            System.out.println(TAG + " musicStepForward clicked ");
+        nextSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+            logger.infoTag(TAG, " NextSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex < musicList.getItems().size() - 1) {
                 musicList.getSelectionModel().select(selectIndex + 1);
+            } else {
+                musicList.getSelectionModel().select(0);
             }
         });
 
 //        mainWindow.prefHeightProperty().bind(MainApp.window.heightProperty());
         mainWindow.widthProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(TAG + "当前窗口宽度 " + newValue.doubleValue());
+            logger.infoTag(TAG, "当前窗口宽度 " + newValue.doubleValue());
             musicProgress.setPrefWidth(newValue.doubleValue());
 //            musicList.setPrefWidth(newValue.doubleValue() - 20);
             musicList.setPrefWidth(newValue.doubleValue());
             musicList.refresh();
         });
         mainWindow.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println(TAG + "当前窗口高度 " + newValue.doubleValue());
+            logger.infoTag(TAG, "当前窗口高度 " + newValue.doubleValue());
 //            double musicListHeight = newValue.doubleValue() - (mainBottom.getHeight() + open_music_file.getHeight() + 20);
 //            musicList.setPrefHeight(musicListHeight);
             musicList.setPrefHeight(newValue.doubleValue());
@@ -138,13 +150,11 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         initMusicList();
         musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (isMusicListFlush) {
-                isMusicListFlush = false;
                 return;
             }
-            isNextMusic = false;
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             musicList.scrollTo(selectIndex);
-            MusicPlayerService.getInstance().load((AudioFile) newValue);
+            musicPlayerService.load((AudioFile) newValue);
             MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(((AudioFile) newValue).getFile()));
         });
     }
@@ -162,22 +172,20 @@ public class FXMLController implements Initializable, StreamPlayerListener {
 
     private void initMusicList(File rootDir) {
         if (!rootDir.exists() || !rootDir.isDirectory()) {
-            System.err.println(" Directory could not be found");
+            logger.infoTag(TAG, " Directory could not be found");
             return;
         }
         threadPool.execute(() -> {
             File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
-            System.out.println(rootDir.getName() + ".length = " + audioFiles.length);
+            logger.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
             ObservableList<AudioFile> musicObsList = FXCollections.observableArrayList();
             if (audioFiles.length > 0) {
                 for (File audioFile : audioFiles) {
                     try {
                         AudioFile musicFile = AudioFileIO.read(audioFile);
                         musicObsList.add(musicFile);
-//                        musicObsList.add(AudioFile.getBaseFilename(audioFile));
-
                     } catch (Throwable t) {
-                        System.err.println("Unable to read record :" + audioFile.getPath());
+                        logger.infoTag(TAG, "Unable to read record :" + audioFile.getPath());
                     }
                 }
             }
@@ -199,19 +207,17 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                 isMusicListFlush = false;
             });
         });
-//        new Thread(() -> {
-//
-//        }).start();
     }
 
     @Override
     public void opened(Object dataSource, Map<String, Object> properties) {
-        System.out.println(TAG + "opened");
+        logger.infoTag(TAG, "opened");
+        musicProgress.setProgress(0);
     }
 
     @Override
     public void progress(int nEncodedBytes, long microsecondPosition, byte[] pcmData, Map<String, Object> properties) {
-        AudioFile audioFile = MusicPlayerService.getInstance().getAudioFile();
+        AudioFile audioFile = musicPlayerService.getAudioFile();
         double trackLength = audioFile.getAudioHeader().getPreciseTrackLength();
         musicProgress.setProgress((int) (microsecondPosition / 1000000) / trackLength);
     }
@@ -219,50 +225,43 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @Override
     public void statusUpdated(StreamPlayerEvent event) {
         switch (event.getPlayerStatus()) {
+            case INIT:
+            case NOT_SPECIFIED:
+            case OPENING:
             case OPENED:
-                musicProgress.setProgress(0);
-                Platform.runLater(() -> {
-                    MusicPlayerService.getInstance().play();
-                });
                 break;
             case PLAYING:
-                isNextMusic = true;
             case RESUMED:
                 antf_resume_circle.setIconLiteral("antf-pause-circle");
                 break;
             case PAUSED:
+            case STOPPED:
                 antf_resume_circle.setIconLiteral("antf-play-circle");
                 break;
-            case STOPPED:
-                musicProgress.setProgress(1);
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                antf_resume_circle.setIconLiteral("antf-play-circle");
-                musicProgress.setProgress(0);
+            case SEEKING:
+            case BUFFERING:
+            case SEEKED:
+                break;
+            case EOM:
                 Platform.runLater(() -> {
                     nextMusic();
                 });
+                logger.infoTag(TAG, "EOM: END OF MEDIA");
                 break;
         }
 
     }
 
     private void nextMusic() {
-        if (!isNextMusic) {
-            return;
-        }
-        System.out.println(TAG + " musicStepForward clicked: SelectedIndex = " + musicList.getSelectionModel().getSelectedIndex());
         int selectIndex = musicList.getSelectionModel().getSelectedIndex();
+        logger.infoTag(TAG, " musicStepForward clicked: SelectedIndex = " + selectIndex);
         if (selectIndex < musicList.getItems().size() - 1) {
             musicList.getSelectionModel().select(selectIndex + 1);
         } else {
             musicList.getSelectionModel().select(0);
         }
         AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
-        MusicPlayerService.getInstance().load(audioFile);
+        musicPlayerService.load(audioFile);
         MainApp.window.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(audioFile.getFile()));
     }
 

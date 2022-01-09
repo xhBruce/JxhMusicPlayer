@@ -38,7 +38,7 @@
                 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
                       BorderPane.alignment="CENTER">
                     <!-- antf-pause-circle antf-play-circle antf-step-backward antf-step-forward-->
-                    <Button fx:id="musicStepBackward">
+                    <Button fx:id="lastSong">
                         <graphic>
                             <FontIcon fx:id="antf_step_backward" iconLiteral="antf-step-backward" iconColor="red"
                                       iconSize="24"/>
@@ -51,7 +51,7 @@
                         </graphic>
                     </Button>
 
-                    <Button fx:id="musicStepForward">
+                    <Button fx:id="nextSong">
                         <graphic>
                             <FontIcon fx:id="antf_step_forward" iconLiteral="antf-step-forward" iconColor="red"
                                       iconSize="24"/>
