@@ -1,6 +1,8 @@
 package org.xhbruce.player.controllers;
 
+import com.goxr3plus.streamplayer.enums.Status;
 import com.goxr3plus.streamplayer.stream.StreamPlayerEvent;
+import com.goxr3plus.streamplayer.stream.StreamPlayerException;
 import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -212,7 +214,13 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @Override
     public void opened(Object dataSource, Map<String, Object> properties) {
         logger.infoTag(TAG, "opened");
-        musicProgress.setProgress(0);
+        if ("OPENFAILED".equals(String.valueOf(dataSource))) {
+            logger.infoTag(TAG, "opened failed!");
+//            musicPlayerService.reset();
+//            Platform.runLater(() -> {
+//                nextMusic();
+//            });
+        }
     }
 
     @Override
@@ -225,8 +233,6 @@ public class FXMLController implements Initializable, StreamPlayerListener {
     @Override
     public void statusUpdated(StreamPlayerEvent event) {
         switch (event.getPlayerStatus()) {
-            case INIT:
-            case NOT_SPECIFIED:
             case OPENING:
             case OPENED:
                 break;
@@ -237,10 +243,6 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             case PAUSED:
             case STOPPED:
                 antf_resume_circle.setIconLiteral("antf-play-circle");
-                break;
-            case SEEKING:
-            case BUFFERING:
-            case SEEKED:
                 break;
             case EOM:
                 Platform.runLater(() -> {

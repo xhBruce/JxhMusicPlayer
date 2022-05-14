@@ -9,15 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="添加选择“打开音乐文件夹”功能，导入音乐文件">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="在列表头尾上下曲等优化">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +57,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1s7d47VNFFP8x6kAR9wpEzvHZN1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -70,7 +75,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../XR3Player-master" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17407759" />
     <property name="project.structure.side.proportion" value="0.16527778" />
@@ -260,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622992560484</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="在列表头尾上下曲等优化">
+      <created>1641724908635</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641724908635</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,7 +297,8 @@
     <MESSAGE value="解决ListView选中执行两次nextMusic()" />
     <MESSAGE value="下一首、上一首和ListView选中监听重复load" />
     <MESSAGE value="添加选择“打开音乐文件夹”功能，到导入音乐文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加选择“打开音乐文件夹”功能，到导入音乐文件" />
+    <MESSAGE value="在列表头尾上下曲等优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="在列表头尾上下曲等优化" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

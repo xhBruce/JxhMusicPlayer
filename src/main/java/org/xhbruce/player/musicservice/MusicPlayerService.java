@@ -2,15 +2,14 @@ package org.xhbruce.player.musicservice;
 
 import com.goxr3plus.streamplayer.stream.StreamPlayer;
 import com.goxr3plus.streamplayer.stream.StreamPlayerException;
+import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.exceptions.CannotReadException;
-import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
-import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
-import org.jaudiotagger.tag.TagException;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.xhbruce.player.application.MainApp.logger;
 
 public class MusicPlayerService extends StreamPlayer {
 
@@ -18,9 +17,10 @@ public class MusicPlayerService extends StreamPlayer {
 
     // private String audioFileName = "Logic - Ballin [Bass Boosted].mp3";
     AudioFile audioFile = new AudioFile();
+    private final ArrayList<StreamPlayerListener> listeners;
 
     private MusicPlayerService() {
-
+        listeners = new ArrayList<>();
     }
 
     public static MusicPlayerService getInstance() {
@@ -36,14 +36,16 @@ public class MusicPlayerService extends StreamPlayer {
 
 
     public void load(AudioFile audioFile) {
-        stop();
+        if (isPausedOrPlaying()) {
+            stop();
+        }
         try {
             this.audioFile = audioFile;
             open(this.audioFile.getFile());
             play();
         } catch (Exception e) {
-            System.out.println("Open failed : " + getStatus());
-            reset();
+            logger.info(" Open failed : " + getStatus());
+//            listeners.forEach(listener -> listener.opened("OPENFAILED", null));
         }
     }
 
@@ -59,7 +61,22 @@ public class MusicPlayerService extends StreamPlayer {
         load(new File(audioFile));
     }
 
+    @Override
+    public void play() {
+        try {
+            super.play();
+        } catch (StreamPlayerException e) {
+            e.printStackTrace();
+        }
+    }
+
     public AudioFile getAudioFile() {
         return audioFile;
+    }
+
+    @Override
+    public void addStreamPlayerListener(StreamPlayerListener streamPlayerListener) {
+        super.addStreamPlayerListener(streamPlayerListener);
+        listeners.add(streamPlayerListener);
     }
 }
