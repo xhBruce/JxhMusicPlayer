@@ -1,9 +1,11 @@
 package org.xhbruce.player.application;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.xhbruce.player.musicservice.MusicPlayerService;
 import org.xhbruce.player.utils.JavaFXTool;
@@ -19,17 +21,17 @@ public class MainAppExit {
 
         }
         MusicPlayerService.getInstance().stop();
-        MainApp.window.close();
+        Platform.exit();
     }
 
     /**
      * This method is used to exit the application
      */
-    public static void confirmApplicationExit() {
+    public static void confirmApplicationExit(Stage stage) {
         final Alert alert = JavaFXTool.createAlert("Exit XhMusicPlayer ?",
                 "Do you want to save the data?",
                 null,
-                Alert.AlertType.CONFIRMATION, StageStyle.UTILITY, MainApp.window, null);
+                Alert.AlertType.CONFIRMATION, StageStyle.UTILITY, stage, null);
 
         // Create Custom Buttons
         final ButtonType exit = new ButtonType("Exit", ButtonBar.ButtonData.OK_DONE);

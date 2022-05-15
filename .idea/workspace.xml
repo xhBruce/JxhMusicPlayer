@@ -9,13 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="在列表头尾上下曲等优化">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" afterDir="false" />
+    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainAppExit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainAppExit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/PathInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/PathInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/MainApp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainApp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -58,11 +62,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/scene.fxml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/build.gradle" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/fxml/MainApp.fxml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="1s7d47VNFFP8x6kAR9wpEzvHZN1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -72,15 +79,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../XR3Player-master" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.17407759" />
-    <property name="project.structure.side.proportion" value="0.16527778" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$/build" />
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/JxhMusicPlayer/src/main/resources/img&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\JxhMusicPlayer\src\main\resources\img" />
+      <recent name="D:\IdeaProjects\JxhMusicPlayer\src\main\resources\css" />
+      <recent name="D:\IdeaProjects\JxhMusicPlayer\src\main\resources\fxml" />
+      <recent name="D:\IdeaProjects\JxhMusicPlayer\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.xhbruce.player.controllers" />
+      <recent name="org.xhbruce.player.controllers.load" />
+    </key>
   </component>
   <component name="RunManager" selected="Gradle.JxhMusicPlayer [run]">
     <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
@@ -272,8 +287,18 @@
       <option name="project" value="LOCAL" />
       <updated>1641724908635</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="update">
+      <created>1652530007046</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1652530007046</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -285,7 +310,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add README.md" />
@@ -298,7 +322,8 @@
     <MESSAGE value="下一首、上一首和ListView选中监听重复load" />
     <MESSAGE value="添加选择“打开音乐文件夹”功能，到导入音乐文件" />
     <MESSAGE value="在列表头尾上下曲等优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="在列表头尾上下曲等优化" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

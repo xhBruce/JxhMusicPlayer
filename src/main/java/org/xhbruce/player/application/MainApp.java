@@ -1,26 +1,22 @@
 package org.xhbruce.player.application;
 
-import com.goxr3plus.streamplayer.stream.StreamPlayer;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.xhbruce.player.controllers.FXMLController;
+import javafx.stage.StageStyle;
+import org.xhbruce.player.controllers.MainAppController;
 import org.xhbruce.player.utils.Logger;
 import org.xhbruce.player.utils.io.PathInfo;
-import org.xhbruce.player.utils.JavaFXTool;
-
 
 public class MainApp extends Application {
 
 
-    // ------ START: 基础 Application  ------
-    /*  window ：launch 主线窗口*/
-    public static Stage window;
+    // ------ START: Application  ------
     public static String TITILE_TAG = " XhMusicPlayer ";
-    public static Logger logger = Logger.getLogger("XhMusicPlayer-");
+    public static Logger logger = Logger.getLogger();
     // ------ END.
 
     public static void main(String[] args) {
@@ -28,27 +24,20 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        window = stage;
-        /* Window */
-        window.setTitle(TITILE_TAG);
-        window.setWidth(JavaFXTool.getVisualScreenWidth() * 0.5);
-        window.setMinWidth(JavaFXTool.getVisualScreenWidth() * 0.5);
-        window.setHeight(JavaFXTool.getVisualScreenHeight() * 0.5);
-        window.setMinHeight(JavaFXTool.getVisualScreenHeight() * 0.5);
-        window.centerOnScreen();
-        window.getIcons().add(PathInfo.getImage("logo-xhcode.png"));
-        window.centerOnScreen();
-        window.setOnCloseRequest(exit -> {
-            MainAppExit.confirmApplicationExit();
-            exit.consume();
-        });
+    public void start(Stage primaryStage) throws Exception {
+//        primaryStage.setTitle(TITILE_TAG);
+//        primaryStage.getIcons().add(PathInfo.getImage("logo-xhcode.png"));
 
-        Parent root = FXMLLoader.load(PathInfo.getfxml("scene.fxml"));
+        FXMLLoader loader = new FXMLLoader(PathInfo.getfxml("MainApp.fxml"));
+        loader.setControllerFactory(c -> new MainAppController(primaryStage));
+        Parent root = loader.load();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(PathInfo.getCSS("styles.css"));
-        stage.setScene(scene);
-        stage.show();
+        scene.getStylesheets().add(PathInfo.getCSS("MainApp.css"));
+        scene.setFill(Color.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.setScene(scene);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
 
     }
 

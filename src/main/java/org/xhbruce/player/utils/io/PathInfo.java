@@ -2,6 +2,7 @@ package org.xhbruce.player.utils.io;
 
 import javafx.scene.image.Image;
 
+import java.io.InputStream;
 import java.net.URL;
 
 public class PathInfo {
@@ -21,7 +22,7 @@ public class PathInfo {
         return PathInfo.class.getResource(PathInfo.CSSS + cssName).toExternalForm();
     }
 
-    public static Image getImage(String imageName) {
-        return new Image(PathInfo.class.getResourceAsStream(IMAGES + imageName));
+    public static InputStream getImage(String imageName) {
+        return PathInfo.class.getResourceAsStream(IMAGES + imageName);
     }
 }
