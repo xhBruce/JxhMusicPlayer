@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<GridPane fx:id="gridPlayPane" hgap="20.0" vgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="grid-pane"
+          stylesheets="@../css/PlayPane.css" xmlns="http://javafx.com/javafx/16"
+          xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="org.xhbruce.player.controllers.PlayPaneController">
+
+    <columnConstraints>
+        <ColumnConstraints minWidth="10.0" prefWidth="300.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="300.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="300.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="300.0"/>
+        <ColumnConstraints minWidth="10.0" prefWidth="300.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+        <RowConstraints minHeight="10.0" prefHeight="80.0" />
+    </rowConstraints>
+
+    <StackPane styleClass="grid-background" GridPane.columnSpan="2147483647" GridPane.RowSpan="2147483647">
+        <GridPane.margin>
+            <Insets left="-15.0" right="-15.0"/>
+        </GridPane.margin>
+    </StackPane>
+
+    <MFXListView id="custList" fx:id="custList" depthLevel="LEVEL2" GridPane.fillWidth="true" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                 GridPane.columnSpan="3" GridPane.rowSpan="6"/>
+
+    <VBox fx:id="playVBox" fillWidth="true" prefWidth="-Infinity" prefHeight="-Infinity" alignment="CENTER"
+          GridPane.columnSpan="2147483647"
+          GridPane.rowIndex="6">
+        <MFXSlider id="musicProgress" fx:id="musicProgress"/>
+        <HBox fx:id="playHBoxButton" prefHeight="-Infinity" alignment="CENTER">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+            <MFXButton fx:id="lastSong" text="">
+                <graphic>
+                    <FontIcon fx:id="antf_step_backward" iconLiteral="antf-step-backward" iconColor="red"
+                              iconSize="24"/>
+                </graphic>
+                <text></text>
+            </MFXButton>
+            <MFXButton fx:id="musicResume" text="">
+                <graphic>
+                    <FontIcon fx:id="antf_resume_circle" iconLiteral="antf-play-circle" iconColor="red" iconSize="24"/>
+                </graphic>
+            </MFXButton>
+
+            <MFXButton fx:id="nextSong" text="">
+                <graphic>
+                    <FontIcon fx:id="antf_step_forward" iconLiteral="antf-step-forward" iconColor="red" iconSize="24"/>
+                </graphic>
+            </MFXButton>
+        </HBox>
+    </VBox>
+</GridPane>
