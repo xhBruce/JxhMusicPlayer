@@ -47,6 +47,9 @@ import static org.xhbruce.player.utils.io.PathInfo.getImage;
 import static org.xhbruce.player.utils.io.PathInfo.getfxml;
 
 public class MainAppController implements Initializable{
+
+    private static String TAG = "MainAppController";
+    private MusicPlayerService musicPlayerService = MusicPlayerService.getInstance();
     private final Stage stage;
 
     @FXML
@@ -61,16 +64,11 @@ public class MainAppController implements Initializable{
     private MFXFontIcon alwaysOnTopIcon;
 
     @FXML
-    private MFXScrollPane scrollPane;
-    @FXML
     private VBox navBar;
 
     @FXML
     private StackPane contentPane;
     private final ToggleGroup toggleGroup;
-
-    File rootDir = new File("F:\\Music");
-    private static String TAG = "MainAppController";
 
     @FXML
     private AnchorPane rootPane;
@@ -79,9 +77,6 @@ public class MainAppController implements Initializable{
     private MFXButton open_music_file;
     @FXML
     private MFXButton open_music_folder;
-    @FXML
-    ListView musicList;
-    private Boolean isMusicListFlush = false;
     @FXML
     private Label labelVersion;
 
@@ -121,6 +116,7 @@ public class MainAppController implements Initializable{
             File filePath = FileUtil.openFileChooser(stage, open_music_file.getText());
             if (filePath.isFile()) {
                 stage.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(filePath));
+                musicPlayerService.load(filePath);
             }
         });
         open_music_folder.setOnAction(event -> {
@@ -132,9 +128,9 @@ public class MainAppController implements Initializable{
     }
     private void initializeLoader() {
         FxmlLoader loader = new FxmlLoader();
-        loader.addView(FxmlLoaderBean.of("BUTTONS", getfxml("scene.fxml")).setBeanToNodeMapper(() -> createToggle("DEFALUT")).setDefaultRoot(true).get());
+        loader.addView(FxmlLoaderBean.of("BUTTONS", getfxml("scene.fxml")).setBeanToNodeMapper(() -> createToggle("DEFALUT")).get());
         loader.addView(FxmlLoaderBean.of("LISTS", getfxml("ListViews.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "Lists")).get());
-        loader.addView(FxmlLoaderBean.of("PLAYPANE", getfxml("PlayPane.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "PlayPane")).get());
+        loader.addView(FxmlLoaderBean.of("PLAYPANE", getfxml("PlayPane.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "PlayPane")).setDefaultRoot(true).get());
         loader.setOnLoadedAction(beans -> {
             List<ToggleButton> nodes = beans.stream()
                     .map(bean -> {
