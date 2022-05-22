@@ -2,9 +2,11 @@ package org.xhbruce.player.utils;
 
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 /**
  * This class has some functions that are not there by default in JavaFX 8
@@ -17,19 +19,6 @@ public final class JavaFXTool {
     }
 
     // -----------------------------------------------------------------------------------------------------------
-
-    /**
-     * Creates an Alert with the given parameters
-     *
-     * @param title
-     * @param headerText
-     * @param contentText
-     * @param alertType
-     * @param stageStyle
-     * @param owner
-     * @param graphic
-     * @return The created Alert based on the given parameters
-     */
     public static Alert createAlert(final String title, final String headerText, final String contentText,
                                     final Alert.AlertType alertType, final StageStyle stageStyle, final Stage owner, final Node graphic) {
 
@@ -78,47 +67,30 @@ public final class JavaFXTool {
     }
 
     // -----------------------------------------------------------------------------------------------------------
-
-    /**
-     * Gets the visual screen height.
-     *
-     * @return The screen <b>Height</b> based on the <b>visual bounds</b> of the
-     * Screen.These bounds account for objects in the native windowing
-     * system such as task bars and menu bars. These bounds are contained by
-     * Screen.bounds.
-     */
     public static double getVisualScreenHeight() {
         return Screen.getPrimary().getVisualBounds().getHeight();
     }
 
-    /**
-     * Gets the visual screen width.
-     *
-     * @return The screen <b>Width</b> based on the <b>visual bounds</b> of the
-     * Screen.These bounds account for objects in the native windowing
-     * system such as task bars and menu bars. These bounds are contained by
-     * Screen.bounds.
-     */
     public static double getVisualScreenWidth() {
         return Screen.getPrimary().getVisualBounds().getWidth();
     }
 
-    /**
-     * Gets the screen height.
-     *
-     * @return The screen <b>Height</b> based on the <b> bounds </b> of the Screen.
-     */
     public static double getScreenHeight() {
         return Screen.getPrimary().getBounds().getHeight();
     }
 
-    /**
-     * Gets the screen width.
-     *
-     * @return The screen <b>Width</b> based on the <b> bounds </b> of the Screen.
-     */
     public static double getScreenWidth() {
         return Screen.getPrimary().getBounds().getWidth();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------
+    public static FontIcon getFontIcon(String iconLiteral, Color color, int size) {
+        FontIcon icon = new FontIcon(iconLiteral);
+        icon.setIconColor(color);
+        if (size != 0) {
+            icon.setIconSize(size);
+        }
+        return icon;
     }
 
 }

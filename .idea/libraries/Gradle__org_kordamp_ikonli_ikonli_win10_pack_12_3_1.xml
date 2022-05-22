@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.kordamp.ikonli:ikonli-win10-pack:12.3.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-win10-pack/12.3.1/93600619bdd7e90190a07e00dc096749f9892c8f/ikonli-win10-pack-12.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.kordamp.ikonli/ikonli-win10-pack/12.3.1/cab6d43a54e7494d772af9711cc76265d47ae40b/ikonli-win10-pack-12.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<?import javafx.geometry.Insets?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.font.MFXFontIcon?>
-<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
-<AnchorPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" styleClass="rootPane"
-            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.xhbruce.player.controllers.MainAppController">
-    <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" layoutY="6.0" prefHeight="50.0" prefWidth="1281.0"
-          spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <padding>
-            <Insets right="10.0"/>
-        </padding>
-        <MFXFontIcon fx:id="alwaysOnTopIcon" description="mfx-circle" size="15.0" styleClass="always-on-top-icon"/>
-        <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" size="15.0" styleClass="minimize-icon"/>
-        <MFXFontIcon fx:id="closeIcon" description="mfx-circle" size="15.0" styleClass="close-icon"/>
-    </HBox>
+<SplitPane fx:id="rootPane" prefHeight="720.0" prefWidth="1280.0" styleClass="rootPane"
+           dividerPositions="0.22"
+           xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.xhbruce.player.controllers.MainAppController">
 
-    <VBox layoutX="227.0" layoutY="51.0" prefWidth="250.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <VBox fx:id="stackOne" SplitPane.resizableWithParent="false" prefWidth="250.0" minWidth="250.0" maxWidth="250.0"
+          styleClass="sidebar">
         <padding>
             <Insets bottom="10.0" left="10.0" top="60.0"/>
         </padding>
@@ -55,11 +46,19 @@
         <Label fx:id="labelVersion" styleClass="label-Version" BorderPane.alignment="BOTTOM_RIGHT" maxHeight="-Infinity"
                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"/>
     </VBox>
-    <StackPane fx:id="contentPane" layoutX="252.0" layoutY="52.0" prefHeight="150.0" prefWidth="200.0"
-               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="10.0"
-               AnchorPane.topAnchor="51.0">
-        <padding>
-            <Insets top="10" left="10" bottom="10" right="10"/>
-        </padding>
-    </StackPane>
-</AnchorPane>
+    <VBox fx:id="stackTwo"  prefWidth="-Infinity" >
+        <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="-Infinity" spacing="10.0">
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+            <MFXFontIcon fx:id="alwaysOnTopIcon" description="mfx-circle" size="15.0" styleClass="always-on-top-icon"/>
+            <MFXFontIcon fx:id="minimizeIcon" description="mfx-circle" size="15.0" styleClass="minimize-icon"/>
+            <MFXFontIcon fx:id="closeIcon" description="mfx-circle" size="15.0" styleClass="close-icon"/>
+        </HBox>
+        <StackPane fx:id="contentPane" alignment="CENTER">
+            <padding>
+                <Insets top="10" left="10" bottom="10" right="10"/>
+            </padding>
+        </StackPane>
+    </VBox>
+</SplitPane>

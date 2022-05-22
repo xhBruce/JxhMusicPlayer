@@ -1,13 +1,12 @@
 package org.xhbruce.player.controllers;
 
+import com.goxr3plus.streamplayer.enums.Status;
 import com.goxr3plus.streamplayer.stream.StreamPlayerEvent;
-import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -15,8 +14,10 @@ import javafx.scene.control.ProgressBar;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileFilter;
 import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.id3.ID3Tags;
 import org.kordamp.ikonli.javafx.FontIcon;
-import org.xhbruce.player.musicservice.MusicPlayerService;
+import org.xhbruce.player.musicservice.XhPlayer;
+import org.xhbruce.player.utils.LOG;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -25,19 +26,17 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
 
-import static org.xhbruce.player.application.MainApp.logger;
-
-public class FXMLController implements Initializable, StreamPlayerListener {
+public class FXMLController extends BaseController {
 
     File rootDir = new File("F:\\Music");
     private static String TAG = "FXMLController";
-    private MusicPlayerService musicPlayerService = MusicPlayerService.getInstance();
+    private XhPlayer playerService = XhPlayer.getInstance();
     private ExecutorService threadPool;
 
     @FXML
     ListView musicList;
-    private Boolean isMusicListFlush = false;
 
     @FXML
     private MFXButton lastSong;
@@ -58,12 +57,12 @@ public class FXMLController implements Initializable, StreamPlayerListener {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        super.initialize(url, rb);
         threadPool = Executors.newSingleThreadExecutor();
-        musicPlayerService.addStreamPlayerListener(this);
-        
+
         lastSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            logger.info(TAG, " LastSong clicked; cur MusicNum=" + selectIndex);
+            LOG.info(TAG, " LastSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex > 0) {
                 musicList.getSelectionModel().select(selectIndex - 1);
             } else {
@@ -73,22 +72,13 @@ public class FXMLController implements Initializable, StreamPlayerListener {
         });
 
         musicResume.setOnAction(event -> {
-            int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            logger.infoTag(TAG, " musicResume clicked; cur MusicNum=" + selectIndex);
-            if (selectIndex >= 0 && selectIndex < musicList.getItems().size()) {
-                if (musicPlayerService.isPlaying()) {
-                    musicPlayerService.pause();
-                } else {
-                    musicPlayerService.resume();
-                }
-            } else {
-                musicList.getSelectionModel().select(0);
-            }
+            LOG.infoTag(TAG, " musicResume clicked;");
+            playerService.resumeOrPuase();
         });
 
         nextSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            logger.infoTag(TAG, " NextSong clicked; cur MusicNum=" + selectIndex);
+            LOG.infoTag(TAG, " NextSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex < musicList.getItems().size() - 1) {
                 musicList.getSelectionModel().select(selectIndex + 1);
             } else {
@@ -96,32 +86,14 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             }
         });
 
-//        mainWindow.prefHeightProperty().bind(MainApp.window.heightProperty());
-//        rootPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-//            logger.infoTag(TAG, "当前窗口宽度 " + newValue.doubleValue());
-//            musicProgress.setPrefWidth(newValue.doubleValue());
-////            musicList.setPrefWidth(newValue.doubleValue() - 20);
-//            musicList.setPrefWidth(newValue.doubleValue());
-//            musicList.refresh();
-//        });
-//        rootPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-//            logger.infoTag(TAG, "当前窗口高度 " + newValue.doubleValue());
-////            double musicListHeight = newValue.doubleValue() - (mainBottom.getHeight() + open_music_file.getHeight() + 20);
-////            musicList.setPrefHeight(musicListHeight);
-//            musicList.setPrefHeight(newValue.doubleValue());
-//            musicList.refresh();
-//        });
-
         musicProgress.setProgress(0);
 
         initMusicList();
         musicList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (isMusicListFlush) {
-                return;
-            }
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
             musicList.scrollTo(selectIndex);
-            musicPlayerService.load((AudioFile) newValue);
+            System.out.println(selectIndex);
+            playerService.play((AudioFile) newValue);
         });
     }
 
@@ -131,19 +103,18 @@ public class FXMLController implements Initializable, StreamPlayerListener {
             path = new String("F:/Music/音乐/".getBytes(), "UTF-8");
             initMusicList(new File(path));
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         }
 
     }
 
     private void initMusicList(File rootDir) {
         if (!rootDir.exists() || !rootDir.isDirectory()) {
-            logger.infoTag(TAG, " Directory could not be found");
+            LOG.infoTag(TAG, " Directory could not be found");
             return;
         }
         threadPool.execute(() -> {
             File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
-            logger.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
+            LOG.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
             ObservableList<AudioFile> musicObsList = FXCollections.observableArrayList();
             if (audioFiles.length > 0) {
                 for (File audioFile : audioFiles) {
@@ -151,13 +122,13 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                         AudioFile musicFile = AudioFileIO.read(audioFile);
                         musicObsList.add(musicFile);
                     } catch (Throwable t) {
-                        logger.infoTag(TAG, "Unable to read record :" + audioFile.getPath());
+                        //logger.infoTag(TAG, "Unable to read record :" + audioFile.getPath());
                     }
                 }
+                LOG.infoTag(TAG, "musicObsList.size = " + musicObsList.size());
             }
             musicObsList.sorted();
             Platform.runLater(() -> {
-                isMusicListFlush = true;
                 musicList.setItems(musicObsList);
                 musicList.setCellFactory(param -> new ListCell<AudioFile>() {
                     @Override
@@ -170,33 +141,21 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                         }
                     }
                 });
-                isMusicListFlush = false;
             });
         });
     }
 
     @Override
-    public void opened(Object dataSource, Map<String, Object> properties) {
-        logger.infoTag(TAG, "opened");
-        if ("OPENFAILED".equals(String.valueOf(dataSource))) {
-            logger.infoTag(TAG, "opened failed!");
-//            musicPlayerService.reset();
-//            Platform.runLater(() -> {
-//                nextMusic();
-//            });
-        }
-    }
-
-    @Override
     public void progress(int nEncodedBytes, long microsecondPosition, byte[] pcmData, Map<String, Object> properties) {
-        AudioFile audioFile = musicPlayerService.getAudioFile();
+        AudioFile audioFile = playerService.getCurAudioFile();
         double trackLength = audioFile.getAudioHeader().getPreciseTrackLength();
         musicProgress.setProgress((int) (microsecondPosition / 1000000) / trackLength);
     }
 
     @Override
     public void statusUpdated(StreamPlayerEvent event) {
-        switch (event.getPlayerStatus()) {
+        final Status status = event.getPlayerStatus();
+        switch (status) {
             case OPENING:
             case OPENED:
                 break;
@@ -209,10 +168,10 @@ public class FXMLController implements Initializable, StreamPlayerListener {
                 antf_resume_circle.setIconLiteral("antf-play-circle");
                 break;
             case EOM:
-                Platform.runLater(() -> {
-                    nextMusic();
-                });
-                logger.infoTag(TAG, "EOM: END OF MEDIA");
+//                Platform.runLater(() -> {
+//                    nextMusic();
+//                });
+//                LOG.infoTag(TAG, "EOM: END OF MEDIA");
                 break;
         }
 
@@ -220,13 +179,13 @@ public class FXMLController implements Initializable, StreamPlayerListener {
 
     private void nextMusic() {
         int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-        logger.infoTag(TAG, " musicStepForward clicked: SelectedIndex = " + selectIndex);
+        LOG.infoTag(TAG, " musicStepForward clicked: SelectedIndex = " + selectIndex);
         if (selectIndex < musicList.getItems().size() - 1) {
             musicList.getSelectionModel().select(selectIndex + 1);
         } else {
             musicList.getSelectionModel().select(0);
         }
         AudioFile audioFile = (AudioFile) musicList.getSelectionModel().getSelectedItem();
-        musicPlayerService.load(audioFile);
+        playerService.play(audioFile);
     }
 }

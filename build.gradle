@@ -19,11 +19,13 @@ dependencies {
     /* MaterialFx */
     implementation 'io.github.palexdev:materialfx:11.13.5'
     /* ikonli 图标使用 */
-    implementation 'org.kordamp.ikonli:ikonli-swing:12.2.0'
-    implementation 'org.kordamp.ikonli:ikonli-core:12.2.0'
-    implementation 'org.kordamp.ikonli:ikonli-javafx:12.2.0'
-    implementation 'org.kordamp.ikonli:ikonli-win10-pack:12.2.0'
-    implementation 'org.kordamp.ikonli:ikonli-antdesignicons-pack:12.2.0'
+    implementation 'org.kordamp.ikonli:ikonli-swing:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-core:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-win10-pack:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-antdesignicons-pack:12.3.1'
+    /* commons-io */
+    implementation 'commons-io:commons-io:2.11.0'
 }
 
 javafx {

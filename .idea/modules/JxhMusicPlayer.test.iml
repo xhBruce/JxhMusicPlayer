@@ -12,15 +12,16 @@
     <orderEntry type="module" module-name="JxhMusicPlayer.main" />
     <orderEntry type="library" name="Gradle: com.github.goxr3plus:java-stream-player:9.0.4" level="project" />
     <orderEntry type="library" name="Gradle: io.github.palexdev:materialfx:11.13.5" level="project" />
-    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-swing:12.2.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-javafx:12.2.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-win10-pack:12.2.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-antdesignicons-pack:12.2.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-core:12.2.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-media:win:16" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-swing:12.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-javafx:12.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-win10-pack:12.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-antdesignicons-pack:12.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-core:12.3.1" level="project" />
+    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:16" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-media:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:16" level="project" />
@@ -30,7 +31,6 @@
     <orderEntry type="library" name="Gradle: com.github.trilarion:vorbis-support:1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.googlecode.soundlibs:tritonus-all:0.3.7.2" level="project" />
     <orderEntry type="library" name="Gradle: com.github.goxr3plus:jaudiotagger:2.2.7" level="project" />
-    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.6" level="project" />
     <orderEntry type="library" name="Gradle: io.github.palexdev:virtualizedfx:11.2.6" level="project" />
     <orderEntry type="library" name="Gradle: com.googlecode.soundlibs:jlayer:1.0.1.4" level="project" />
     <orderEntry type="library" name="Gradle: com.googlecode.soundlibs:jorbis:0.0.17-2" level="project" />

@@ -1,57 +1,42 @@
 package org.xhbruce.player.controllers;
 
-import com.goxr3plus.streamplayer.stream.StreamPlayerEvent;
-import com.goxr3plus.streamplayer.stream.StreamPlayerListener;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
 import io.github.palexdev.materialfx.controls.MFXRectangleToggleNode;
-import io.github.palexdev.materialfx.controls.MFXScrollPane;
 import io.github.palexdev.materialfx.font.MFXFontIcon;
 import io.github.palexdev.materialfx.utils.others.loader.MFXLoader;
 import io.github.palexdev.materialfx.utils.others.loader.MFXLoaderBean;
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileFilter;
-import org.jaudiotagger.audio.AudioFileIO;
-import org.kordamp.ikonli.javafx.FontIcon;
-import org.xhbruce.player.application.MainApp;
 import org.xhbruce.player.application.MainAppExit;
-import org.xhbruce.player.controllers.load.FxmlLoader;
-import org.xhbruce.player.controllers.load.FxmlLoaderBean;
-import org.xhbruce.player.musicservice.MusicPlayerService;
-import org.xhbruce.player.utils.io.FileUtil;
+import org.xhbruce.player.musicservice.XhPlayer;
+import org.xhbruce.player.utils.FileUtil;
+import org.xhbruce.player.utils.LOG;
+import org.xhbruce.player.utils.ResourceBundleUtil;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import static org.xhbruce.player.application.MainApp.logger;
-import static org.xhbruce.player.utils.io.PathInfo.getImage;
-import static org.xhbruce.player.utils.io.PathInfo.getfxml;
-
-public class MainAppController implements Initializable{
+public class MainAppController extends BaseController {
 
     private static String TAG = "MainAppController";
-    private MusicPlayerService musicPlayerService = MusicPlayerService.getInstance();
+    private XhPlayer xhPlayer = XhPlayer.getInstance();
     private final Stage stage;
 
+    @FXML
+    private SplitPane rootPane;
     @FXML
     private HBox windowHeader;
     private double xOffset;
@@ -70,8 +55,6 @@ public class MainAppController implements Initializable{
     private StackPane contentPane;
     private final ToggleGroup toggleGroup;
 
-    @FXML
-    private AnchorPane rootPane;
 
     @FXML
     private MFXButton open_music_file;
@@ -114,23 +97,23 @@ public class MainAppController implements Initializable{
 
         open_music_file.setOnAction(event -> {
             File filePath = FileUtil.openFileChooser(stage, open_music_file.getText());
-            if (filePath.isFile()) {
-                stage.setTitle(MainApp.TITILE_TAG + " : " + AudioFile.getBaseFilename(filePath));
-                musicPlayerService.load(filePath);
+            if (filePath != null && filePath.isFile()) {
+                xhPlayer.play(filePath);
             }
         });
         open_music_folder.setOnAction(event -> {
             File filePath = FileUtil.openFolderChooser(stage, open_music_folder.getText());
             if (filePath != null && filePath.isDirectory()) {
-                logger.infoTag(TAG, " open_music_folder = " + filePath.getAbsolutePath());
+                LOG.infoTag(TAG, " open_music_folder = " + filePath.getAbsolutePath());
             }
         });
     }
+
     private void initializeLoader() {
-        FxmlLoader loader = new FxmlLoader();
-        loader.addView(FxmlLoaderBean.of("BUTTONS", getfxml("scene.fxml")).setBeanToNodeMapper(() -> createToggle("DEFALUT")).get());
-        loader.addView(FxmlLoaderBean.of("LISTS", getfxml("ListViews.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "Lists")).get());
-        loader.addView(FxmlLoaderBean.of("PLAYPANE", getfxml("PlayPane.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "PlayPane")).setDefaultRoot(true).get());
+        MFXLoader loader = new MFXLoader();
+        loader.addView(MFXLoaderBean.of("BUTTONS", ResourceBundleUtil.getfxml("scene.fxml")).setBeanToNodeMapper(() -> createToggle("DEFALUT")).get());
+        loader.addView(MFXLoaderBean.of("LISTS", ResourceBundleUtil.getfxml("ListViews.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "Lists")).get());
+        loader.addView(MFXLoaderBean.of("PLAYPANE", ResourceBundleUtil.getfxml("PlayPane.fxml")).setBeanToNodeMapper(() -> createToggle("mfx-square-list", "PlayPane")).setDefaultRoot(true).get());
         loader.setOnLoadedAction(beans -> {
             List<ToggleButton> nodes = beans.stream()
                     .map(bean -> {
@@ -148,9 +131,10 @@ public class MainAppController implements Initializable{
         loader.start();
     }
 
-    private ToggleButton createToggle(String text){
-        return createToggle(null,text);
+    private ToggleButton createToggle(String text) {
+        return createToggle(null, text);
     }
+
     private ToggleButton createToggle(String icon, String text) {
         MFXIconWrapper wrapper = new MFXIconWrapper(icon, 24, 32);
 
