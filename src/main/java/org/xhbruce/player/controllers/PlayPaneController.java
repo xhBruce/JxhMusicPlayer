@@ -14,7 +14,7 @@ import org.jaudiotagger.audio.AudioFile;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.xhbruce.player.musicservice.XhPlayer;
 import org.xhbruce.player.utils.JavaFXTool;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 
 import java.net.URL;
 import java.util.Map;
@@ -50,13 +50,13 @@ public class PlayPaneController extends BaseController {
         musicProgress.getRanges3().add(NumberRange.of(67.0, musicProgress.getMax()));
 
         lastSong.setOnAction(event -> {
-            LOG.info(TAG, " lastSong clicked;");
+            Log.i(TAG, " lastSong clicked;");
         });
         nextSong.setOnAction(event -> {
-            LOG.info(TAG, " nextSong clicked;");
+            Log.i(TAG, " nextSong clicked;");
         });
         musicResume.setOnAction(event -> {
-            LOG.info(TAG, " musicResume clicked;");
+            Log.i(TAG, " musicResume clicked;");
             xhPlayer.resumeOrPuase();
         });
 
@@ -65,7 +65,7 @@ public class PlayPaneController extends BaseController {
 
     @Override
     public void opened(Object dataSource, Map<String, Object> properties) {
-        LOG.infoTag(TAG, "opened , dataSource = " + dataSource.toString());
+        Log.i(TAG, "opened , dataSource = " + dataSource.toString());
     }
 
     @Override
@@ -90,7 +90,7 @@ public class PlayPaneController extends BaseController {
             }
             case OPENED: {
 //                if(){
-                LOG.infoTag(TAG, "OPENED , isPausedOrPlaying = " + xhPlayer.isPausedOrPlaying());
+                Log.i(TAG, "OPENED , isPausedOrPlaying = " + xhPlayer.isPausedOrPlaying());
 //                }
                 break;
             }
@@ -98,7 +98,7 @@ public class PlayPaneController extends BaseController {
             case PAUSED:
             case RESUMED:
             case STOPPED: {
-                LOG.infoTag(TAG, "musicResume icon");
+                Log.i(TAG, "musicResume icon");
                 Platform.runLater(() -> {
                     musicResume.setGraphic(xhPlayer.isPlaying() ? pauseIcon : playIcon);
                 });

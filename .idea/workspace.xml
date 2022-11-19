@@ -10,14 +10,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="更新布局,调整播放XhPlayer">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_goxr3plus_java_stream_player_9_0_4.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/BaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/BaseController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/MainAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/MainAppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/PlayPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/PlayPaneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayerListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayerService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/XhPlayerService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/LOG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/BaseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/PlayPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/PlayPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/logger/Log.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

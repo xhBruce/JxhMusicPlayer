@@ -4,7 +4,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.EventDispatchChain;
 import org.jaudiotagger.audio.AudioFileFilter;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 
 import java.io.File;
 
@@ -105,7 +105,7 @@ public class XhPlayerService extends Service<Boolean> {
                 System.out.println(" xhbruce tast ");
                 File rootDir = new File("F:/Music/音乐/");
                 File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
-                LOG.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
+                Log.i(TAG, rootDir.getName() + ".length = " + audioFiles.length);
                 return true;
             }
         };

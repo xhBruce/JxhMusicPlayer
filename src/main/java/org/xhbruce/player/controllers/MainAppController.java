@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import org.xhbruce.player.application.MainAppExit;
 import org.xhbruce.player.musicservice.XhPlayer;
 import org.xhbruce.player.utils.FileUtil;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 import org.xhbruce.player.utils.ResourceBundleUtil;
 
 import java.io.File;
@@ -104,7 +104,7 @@ public class MainAppController extends BaseController {
         open_music_folder.setOnAction(event -> {
             File filePath = FileUtil.openFolderChooser(stage, open_music_folder.getText());
             if (filePath != null && filePath.isDirectory()) {
-                LOG.infoTag(TAG, " open_music_folder = " + filePath.getAbsolutePath());
+                Log.i(TAG, " open_music_folder = " + filePath.getAbsolutePath());
             }
         });
     }

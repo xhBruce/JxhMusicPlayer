@@ -7,23 +7,34 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.id3.ID3Tags;
+import org.xhbruce.logger.Log;
 import org.xhbruce.player.controllers.MainAppController;
-import org.xhbruce.player.utils.LOG;
 import org.xhbruce.player.utils.ResourceBundleUtil;
+
+import java.util.logging.Level;
 
 public class MainApp extends Application {
 
-
-    // ------ START: Application  ------
-    public static String TITILE_TAG = " XhMusicPlayer ";
-    // ------ END.
+    private static String TAG = "MainApp";
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
+    public void init() throws Exception {
+        super.init();
+        AudioFile.logger.setLevel(Level.OFF);
+        AudioFileIO.logger.setLevel(Level.OFF);
+        ID3Tags.logger.setLevel(Level.OFF);
+    }
+
+    @Override
     public void start(Stage primaryStage) throws Exception {
+        Log.d(TAG, "----- start() -----");
         FXMLLoader loader = new FXMLLoader(ResourceBundleUtil.getfxml("MainApp.fxml"));
         loader.setControllerFactory(c -> new MainAppController(primaryStage));
         Parent root = loader.load();
@@ -39,7 +50,7 @@ public class MainApp extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
-        LOG.info("----- MainApp stop() -----");
+        Log.i(TAG, "----- stop() -----");
     }
 
 }

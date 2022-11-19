@@ -14,20 +14,17 @@ import javafx.scene.control.ProgressBar;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileFilter;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.tag.id3.ID3Tags;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.xhbruce.player.musicservice.XhPlayer;
 import org.xhbruce.player.musicservice.XhPlayerService;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Level;
 
 public class FXMLController extends BaseController {
 
@@ -63,7 +60,7 @@ public class FXMLController extends BaseController {
 
         lastSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            LOG.info(TAG, " LastSong clicked; cur MusicNum=" + selectIndex);
+            Log.i(TAG, " LastSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex > 0) {
                 musicList.getSelectionModel().select(selectIndex - 1);
             } else {
@@ -73,13 +70,13 @@ public class FXMLController extends BaseController {
         });
 
         musicResume.setOnAction(event -> {
-            LOG.infoTag(TAG, " musicResume clicked;");
+            Log.i(TAG, " musicResume clicked;");
             playerService.resumeOrPuase();
         });
 
         nextSong.setOnAction(event -> {
             int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-            LOG.infoTag(TAG, " NextSong clicked; cur MusicNum=" + selectIndex);
+            Log.i(TAG, " NextSong clicked; cur MusicNum=" + selectIndex);
             if (selectIndex < musicList.getItems().size() - 1) {
                 musicList.getSelectionModel().select(selectIndex + 1);
             } else {
@@ -107,12 +104,12 @@ public class FXMLController extends BaseController {
 
     private void initMusicList(File rootDir) {
         if (!rootDir.exists() || !rootDir.isDirectory()) {
-            LOG.infoTag(TAG, " Directory could not be found");
+            Log.i(TAG, " Directory could not be found");
             return;
         }
         threadPool.execute(() -> {
             File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
-            LOG.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
+            Log.i(TAG, rootDir.getName() + ".length = " + audioFiles.length);
             ObservableList<AudioFile> musicObsList = FXCollections.observableArrayList();
             if (audioFiles.length > 0) {
                 for (File audioFile : audioFiles) {
@@ -123,7 +120,7 @@ public class FXMLController extends BaseController {
                         //logger.infoTag(TAG, "Unable to read record :" + audioFile.getPath());
                     }
                 }
-                LOG.infoTag(TAG, "musicObsList.size = " + musicObsList.size());
+                Log.i(TAG, "musicObsList.size = " + musicObsList.size());
             }
             musicObsList.sorted();
             Platform.runLater(() -> {
@@ -177,7 +174,7 @@ public class FXMLController extends BaseController {
 
     private void nextMusic() {
         int selectIndex = musicList.getSelectionModel().getSelectedIndex();
-        LOG.infoTag(TAG, " musicStepForward clicked: SelectedIndex = " + selectIndex);
+        Log.i(TAG, " musicStepForward clicked: SelectedIndex = " + selectIndex);
         if (selectIndex < musicList.getItems().size() - 1) {
             musicList.getSelectionModel().select(selectIndex + 1);
         } else {

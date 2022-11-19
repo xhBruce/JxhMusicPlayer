@@ -3,7 +3,7 @@ package org.xhbruce.player.controllers;
 import javafx.fxml.Initializable;
 import org.xhbruce.player.musicservice.XhPlayer;
 import org.xhbruce.player.musicservice.XhPlayerListener;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 import org.xhbruce.player.utils.ResourceBundleUtil;
 
 import java.net.URL;
@@ -14,7 +14,7 @@ public class BaseController extends XhPlayerListener implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        LOG.info(TAG, "addStreamPlayerListener ");
+        Log.i(TAG, "addStreamPlayerListener ");
         XhPlayer.getInstance().addStreamPlayerListener(this);
     }
 

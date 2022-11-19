@@ -10,7 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="JxhMusicPlayer.main" />
-    <orderEntry type="library" name="Gradle: com.github.goxr3plus:java-stream-player:9.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.goxr3plus:java-stream-player:10.0.2" level="project" />
     <orderEntry type="library" name="Gradle: io.github.palexdev:materialfx:11.13.5" level="project" />
     <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-swing:12.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-javafx:12.3.1" level="project" />

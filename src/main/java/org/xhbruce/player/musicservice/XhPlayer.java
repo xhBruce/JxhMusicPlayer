@@ -8,7 +8,7 @@ import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
 import org.jaudiotagger.tag.TagException;
-import org.xhbruce.player.utils.LOG;
+import org.xhbruce.logger.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class XhPlayer extends StreamPlayer {
 
     public Boolean play(Object audioFile) {
         if (audioFile == null) {
-            LOG.infoTag(TAG, "audioFile is null");
+            Log.i(TAG, "audioFile is null");
             return false;
         }
 
@@ -68,7 +68,7 @@ public class XhPlayer extends StreamPlayer {
             play();
             setCurAudioFile(audioFile);
         } catch (StreamPlayerException e) {
-            LOG.infoTag(TAG, e.getCause().toString() + ";" + getCurAudioFile().getFile().getName());
+            Log.i(TAG, e.getCause().toString() + ";" + getCurAudioFile().getFile().getName());
             return false;
         }
         return true;
