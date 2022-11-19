@@ -3,9 +3,14 @@ package org.xhbruce.player.musicservice;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.EventDispatchChain;
+import org.jaudiotagger.audio.AudioFileFilter;
+import org.xhbruce.player.utils.LOG;
+
+import java.io.File;
 
 public class XhPlayerService extends Service<Boolean> {
 
+    private static String TAG ="XhPlayerService";
     private static XhPlayerService xhPlayerService;
     private XhPlayer xhPlayer = XhPlayer.getInstance();
 
@@ -98,6 +103,9 @@ public class XhPlayerService extends Service<Boolean> {
             @Override
             protected Boolean call() {
                 System.out.println(" xhbruce tast ");
+                File rootDir = new File("F:/Music/音乐/");
+                File[] audioFiles = rootDir.listFiles(new AudioFileFilter(false));
+                LOG.infoTag(TAG, rootDir.getName() + ".length = " + audioFiles.length);
                 return true;
             }
         };

@@ -17,6 +17,7 @@ import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.id3.ID3Tags;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.xhbruce.player.musicservice.XhPlayer;
+import org.xhbruce.player.musicservice.XhPlayerService;
 import org.xhbruce.player.utils.LOG;
 
 import java.io.File;
@@ -98,12 +99,9 @@ public class FXMLController extends BaseController {
     }
 
     private void initMusicList() {
-        String path = "";
-        try {
-            path = new String("F:/Music/音乐/".getBytes(), "UTF-8");
-            initMusicList(new File(path));
-        } catch (UnsupportedEncodingException e) {
-        }
+        XhPlayerService xhPlayerService = XhPlayerService.getInstance();
+        xhPlayerService.start();
+        initMusicList(new File("F:/Music/音乐/"));
 
     }
 

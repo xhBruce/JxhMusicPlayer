@@ -9,58 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="使用MaterialFx更新布局">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_kordamp_ikonli_ikonli_antdesignicons_pack_12_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_kordamp_ikonli_ikonli_core_12_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_kordamp_ikonli_ikonli_javafx_12_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_kordamp_ikonli_ikonli_swing_12_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_kordamp_ikonli_ikonli_win10_pack_12_2_0.xml" beforeDir="false" />
+    <list default="true" id="5e8ebaa2-1b03-4ff4-bd77-2e46d3cd3c11" name="Default Changelist" comment="更新布局,调整播放XhPlayer">
       <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/JxhMusicPlayer.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainAppExit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/application/MainAppExit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/FXMLController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/MainAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/MainAppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/PlayPaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/PlayPaneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/load/FxmlLoader$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/load/FxmlLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/load/FxmlLoaderBean$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/controllers/load/FxmlLoaderBean.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/musicservice/MusicPlayerService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/JavaFXTool.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/JavaFXTool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/Logger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/io/FileUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/org/xhbruce/player/utils/io/PathInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxml/MainApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxml/MainApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxml/PlayPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxml/PlayPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainAppExit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/application/MainAppExit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/FXMLController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/MainAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/PlayPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/PlayPaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/load/FxmlLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/controllers/load/FxmlLoaderBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/MusicPlayerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/JavaFXTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/JavaFXTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/io/PathInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/PlayPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/PlayPane.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/musicservice/XhPlayerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/xhbruce/player/utils/LOG.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +41,22 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="JxhMusicPlayer" type="f1a62948:ProjectNode" />
+                <item name="运行配置" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -120,12 +93,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "D:/IdeaProjects/JxhMusicPlayer/src/main/java/org/xhbruce/player/utils",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/JxhMusicPlayer/src/main/java/org/xhbruce/player/utils&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\JxhMusicPlayer\src\main\java\org\xhbruce\player\utils" />
@@ -250,18 +223,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Test" />
-      <item itemvalue="Application.Main" />
       <item itemvalue="Gradle.JxhMusicPlayer [build]" />
       <item itemvalue="Gradle.JxhMusicPlayer [clean]" />
       <item itemvalue="Gradle.JxhMusicPlayer [run]" />
       <item itemvalue="Gradle.JxhMusicPlayer [jlink]" />
+      <item itemvalue="应用程序.Test" />
+      <item itemvalue="应用程序.Main" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -370,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652617063334</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="更新布局,调整播放XhPlayer">
+      <created>1653190510468</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1653190510468</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -400,7 +375,8 @@
     <MESSAGE value="在列表头尾上下曲等优化" />
     <MESSAGE value="update" />
     <MESSAGE value="使用MaterialFx更新布局" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用MaterialFx更新布局" />
+    <MESSAGE value="更新布局,调整播放XhPlayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新布局,调整播放XhPlayer" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

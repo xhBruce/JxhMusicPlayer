@@ -36,7 +36,7 @@ public class PlayPaneController extends BaseController {
     @FXML
     private MFXButton musicResume;
     private FontIcon playIcon = JavaFXTool.getFontIcon("antf-play-circle", Color.RED, 24);
-    private FontIcon pauseIcon = JavaFXTool.getFontIcon("antf-play-circle", Color.RED, 24);
+    private FontIcon pauseIcon = JavaFXTool.getFontIcon("antf-pause-circle", Color.RED, 24);
     @FXML
     private MFXSlider musicProgress;
 
@@ -98,6 +98,7 @@ public class PlayPaneController extends BaseController {
             case PAUSED:
             case RESUMED:
             case STOPPED: {
+                LOG.infoTag(TAG, "musicResume icon");
                 Platform.runLater(() -> {
                     musicResume.setGraphic(xhPlayer.isPlaying() ? pauseIcon : playIcon);
                 });

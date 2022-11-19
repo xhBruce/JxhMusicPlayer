@@ -18,10 +18,10 @@
     <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-antdesignicons-pack:12.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.kordamp.ikonli:ikonli-core:12.3.1" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:2.11.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.openjfx:javafx-media:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-fxml:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-controls:win:16" level="project" />
-    <orderEntry type="library" name="Gradle: org.openjfx:javafx-media:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-graphics:win:16" level="project" />
     <orderEntry type="library" name="Gradle: org.openjfx:javafx-base:16" level="project" />

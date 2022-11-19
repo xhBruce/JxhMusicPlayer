@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.xhbruce.player.controllers.FXMLController">
+    <VBox>
+        <ListView fx:id="musicList" prefHeight="620.0" prefWidth="800.0"/>
+        <VBox  prefWidth="800.0">
+            <ProgressBar fx:id="musicProgress" prefHeight="18.0" prefWidth="800.0"/>
+
+            <HBox prefWidth="800.0" alignment="CENTER">
+                <!-- antf-pause-circle antf-play-circle antf-step-backward antf-step-forward-->
+                <MFXButton fx:id="lastSong" text="">
+                    <graphic>
+                        <FontIcon fx:id="antf_step_backward" iconLiteral="antf-step-backward" iconColor="red"
+                                  iconSize="24"/>
+                    </graphic>
+                    <text></text>
+                </MFXButton>
+                <MFXButton fx:id="musicResume" text="">
+                    <graphic>
+                        <FontIcon fx:id="antf_resume_circle" iconLiteral="antf-play-circle" iconColor="red"
+                                  iconSize="24"/>
+                    </graphic>
+                </MFXButton>
+
+                <MFXButton fx:id="nextSong" text="">
+                    <graphic>
+                        <FontIcon fx:id="antf_step_forward" iconLiteral="antf-step-forward" iconColor="red"
+                                  iconSize="24"/>
+                    </graphic>
+                </MFXButton>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>
