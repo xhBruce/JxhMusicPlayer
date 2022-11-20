@@ -1,10 +1,15 @@
+.gradle
 .gradle/*.*
+.idea
 .idea/*.*
 build
 build/*.*
 build/classes/*.*
 build/resources/*.*
 build/tmp/*.*
+gradle
 gradle/*.*
+META-INF
 META-INF/*.*
+out
 out/*.*
