@@ -1,9 +1,0 @@
-.gradle/*.*
-.idea/*.*
-build/*.*
-build/classes/*.*
-build/resources/*.*
-build/tmp/*.*
-gradle/*.*
-META-INF/*.*
-out/*.*
