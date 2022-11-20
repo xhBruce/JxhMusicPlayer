@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.goxr3plus:java-stream-player:10.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goxr3plus/java-stream-player/10.0.2/bf24e965b74cc7505189fe782c4d36321bfd1045/java-stream-player-10.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.goxr3plus/java-stream-player/10.0.2/4d28bbb0bc971618a8084bca04add914d4816850/java-stream-player-10.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
