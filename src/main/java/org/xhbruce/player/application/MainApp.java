@@ -50,7 +50,7 @@ public class MainApp extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
-        Log.i(TAG, "----- stop() -----");
+        Log.d(TAG, "----- stop() -----");
     }
 
 }
